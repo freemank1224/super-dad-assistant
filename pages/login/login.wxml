@@ -1,0 +1,44 @@
+<!-- pages/login/login.wxml -->
+<view class="container login-container">
+  <view class="logo-section">
+    <image class="logo" src="../../images/app-logo.png"></image>
+    <text class="app-name">超级爸爸提问助手</text>
+    <text class="app-slogan">让亲子阅读更有启发性</text>
+  </view>
+  
+  <view class="login-form card">
+    <view class="form-title">账号登录</view>
+    
+    <view class="input-group">
+      <view class="input-label">用户名</view>
+      <input class="input" type="text" placeholder="请输入用户名" bindinput="inputUsername" value="{{username}}"/>
+    </view>
+    
+    <view class="input-group">
+      <view class="input-label">密码</view>
+      <input class="input" type="password" placeholder="请输入密码" bindinput="inputPassword" value="{{password}}"/>
+    </view>
+    
+    <button class="btn btn-primary login-btn" bindtap="login">登录</button>
+    
+    <view class="divider"></view>
+    
+    <view class="other-options">
+      <navigator url="/pages/register/register" class="register-link">还没有账号？立即注册</navigator>
+    </view>
+  </view>
+  
+  <!-- 微信一键登录 -->
+  <view class="wechat-login-section">
+    <view class="wechat-login-title">或者使用</view>
+    <button class="wechat-login-btn" open-type="getUserInfo" bindgetuserinfo="wechatLogin">
+      <image class="wechat-icon" src="../../images/wechat-icon.png"></image>
+      微信一键登录
+    </button>
+  </view>
+  
+  <!-- 体验模式 -->
+  <view class="guest-login">
+    <text bindtap="guestLogin">体验模式（无需登录）</text>
+  </view>
+</view>

@@ -1,0 +1,119 @@
+/* pages/login/login.wxss */
+
+.login-container {
+  padding-top: 60rpx;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+}
+
+.app-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  color: #333;
+}
+
+.app-slogan {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.login-form {
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.form-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.login-btn {
+  margin-top: 40rpx;
+  width: 100%;
+}
+
+.other-options {
+  display: flex;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.register-link {
+  color: #3E7BFA;
+}
+
+.wechat-login-section {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wechat-login-title {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.wechat-login-title::before,
+.wechat-login-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60rpx;
+  height: 1rpx;
+  background-color: #ddd;
+}
+
+.wechat-login-title::before {
+  left: -80rpx;
+}
+
+.wechat-login-title::after {
+  right: -80rpx;
+}
+
+.wechat-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #07C160;
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  padding: 0 30rpx;
+  width: 60%;
+}
+
+.wechat-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.guest-login {
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.guest-login text {
+  font-size: 26rpx;
+  color: #999;
+  text-decoration: underline;
+}

@@ -1,0 +1,58 @@
+<!-- pages/history/history.wxml -->
+<view class="container history-container">
+  <view class="page-title">对话历史</view>
+  
+  <!-- 历史记录列表 -->
+  <view class="history-list" wx:if="{{historyList.length > 0}}">
+    <view class="history-item card" wx:for="{{historyList}}" wx:key="timestamp">
+      <view class="history-header">
+        <view class="history-time">{{item.formattedTime}}</view>
+        <view class="history-actions">
+          <view class="action-btn" bindtap="deleteHistory" data-index="{{index}}">
+            <image src="../../images/delete.png"></image>
+          </view>
+        </view>
+      </view>
+      
+      <view class="history-content">
+        <view class="history-question">
+          <text class="label">问题：</text>
+          <text class="content">{{item.question}}</text>
+        </view>
+        
+        <view class="history-answer">
+          <text class="label">回答：</text>
+          <text class="content">{{item.answer}}</text>
+        </view>
+        
+        <view class="history-response">
+          <text class="label">引导：</text>
+          <text class="content">{{item.response}}</text>
+        </view>
+      </view>
+      
+      <view class="history-footer">
+        <view class="action-btn" bindtap="copyHistory" data-index="{{index}}">
+          <image src="../../images/copy.png"></image>
+          <text>复制对话</text>
+        </view>
+        <view class="action-btn" bindtap="shareHistory" data-index="{{index}}">
+          <image src="../../images/share.png"></image>
+          <text>分享</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <image src="../../images/empty.png" class="empty-image"></image>
+    <view class="empty-text">暂无对话历史</view>
+    <button class="btn btn-primary" bindtap="goToIndex">开始新对话</button>
+  </view>
+  
+  <!-- 清空按钮 -->
+  <view class="clear-all" wx:if="{{historyList.length > 0}}" bindtap="clearAllHistory">
+    <text>清空全部历史</text>
+  </view>
+</view>

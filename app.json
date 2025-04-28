@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/photo-mode/photo-mode",
+    "pages/topic-mode/topic-mode",
+    "pages/voice-interaction/voice-interaction",
+    "pages/history/history",
+    "pages/user-center/user-center"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3E7BFA",
+    "navigationBarTitleText": "超级爸爸提问助手",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#3E7BFA",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史",
+        "iconPath": "images/history.png",
+        "selectedIconPath": "images/history-active.png"
+      },
+      {
+        "pagePath": "pages/user-center/user-center",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.camera": {
+      "desc": "用于拍摄绘本内容进行文字识别"
+    },
+    "scope.record": {
+      "desc": "用于语音输入和互动对话"
+    }
+  }
+}

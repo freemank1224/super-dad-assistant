@@ -1,0 +1,84 @@
+<!-- pages/photo-mode/photo-mode.wxml -->
+<view class="container photo-mode-container">
+  <view class="page-title">绘本拍照模式</view>
+  
+  <!-- 拍照区域 -->
+  <view class="camera-section" wx:if="{{!showTextResult && !showQuestions}}">
+    <view class="camera-container">
+      <camera device-position="back" flash="auto" binderror="cameraError" class="camera" wx:if="{{!tempImagePath}}"></camera>
+      <image wx:else class="preview-image" src="{{tempImagePath}}"></image>
+    </view>
+    
+    <view class="camera-controls">
+      <view class="control-btn" bindtap="cancelPhoto" wx:if="{{tempImagePath}}">
+        <image src="../../images/cancel.png"></image>
+        <text>取消</text>
+      </view>
+      <view class="control-btn take-photo" bindtap="{{tempImagePath ? 'confirmPhoto' : 'takePhoto'}}">
+        <image src="{{tempImagePath ? '../../images/confirm.png' : '../../images/camera.png'}}"></image>
+        <text>{{tempImagePath ? '确认' : '拍照'}}</text>
+      </view>
+      <view class="control-btn" bindtap="chooseFromAlbum" wx:if="{{!tempImagePath}}">
+        <image src="../../images/album.png"></image>
+        <text>相册</text>
+      </view>
+      <view class="control-btn" wx:else></view> <!-- 占位 -->
+    </view>
+    
+    <view class="tips">
+      <text>提示：请确保绘本页面清晰可见，光线充足</text>
+    </view>
+  </view>
+  
+  <!-- 文字识别结果区域 -->
+  <view class="text-result-section" wx:if="{{showTextResult && !showQuestions}}">
+    <view class="section-title">识别结果</view>
+    
+    <view class="text-content card">
+      <textarea value="{{recognizedText}}" bindinput="textInput" placeholder="识别的文字将显示在这里，您也可以手动编辑" auto-height />
+    </view>
+    
+    <view class="voice-input-section">
+      <view class="section-title">请说出您想提问的主题或关键词（选填）</view>
+      <view class="voice-input-container">
+        <view class="voice-btn" bindtouchstart="startVoiceInput" bindtouchend="endVoiceInput">
+          <image src="{{isRecording ? '../../images/recording.png' : '../../images/microphone.png'}}"></image>
+          <text>{{isRecording ? '松开结束' : '按住说话'}}</text>
+        </view>
+      </view>
+      <view class="voice-text" wx:if="{{voiceText}}">
+        <text>{{voiceText}}</text>
+      </view>
+    </view>
+    
+    <view class="action-buttons">
+      <button class="btn btn-outline" bindtap="backToCamera">重新拍照</button>
+      <button class="btn btn-primary" bindtap="generateQuestions">生成提问</button>
+    </view>
+  </view>
+  
+  <!-- 生成的问题列表区域 -->
+  <view class="questions-section" wx:if="{{showQuestions}}">
+    <view class="section-title">启发式提问</view>
+    
+    <view class="questions-list">
+      <view class="question-item card" wx:for="{{questions}}" wx:key="index">
+        <view class="question-number">问题 {{index + 1}}</view>
+        <view class="question-content">{{item.content}}</view>
+        <view class="question-actions">
+          <view class="action-btn" bindtap="favoriteQuestion" data-index="{{index}}">
+            <image src="{{item.favorite ? '../../images/star-filled.png' : '../../images/star.png'}}"></image>
+          </view>
+          <view class="action-btn" bindtap="copyQuestion" data-index="{{index}}">
+            <image src="../../images/copy.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="action-buttons">
+      <button class="btn btn-outline" bindtap="backToTextResult">返回编辑</button>
+      <button class="btn btn-primary" bindtap="startVoiceInteraction">开始语音互动</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,142 @@
+/* pages/history/history.wxss */
+
+.history-container {
+  padding: 30rpx;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  text-align: center;
+  color: #333;
+}
+
+/* 历史记录列表 */
+.history-list {
+  margin-bottom: 40rpx;
+}
+
+.history-item {
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+  border-radius: 16rpx;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.history-time {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.history-actions {
+  display: flex;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #007AFF;
+}
+
+.action-btn image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.history-content {
+  margin-bottom: 20rpx;
+}
+
+.history-question,
+.history-answer,
+.history-response {
+  margin-bottom: 16rpx;
+  line-height: 1.5;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 500;
+  margin-right: 10rpx;
+}
+
+.content {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.history-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.empty-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+}
+
+/* 清空按钮 */
+.clear-all {
+  text-align: center;
+  margin: 40rpx 0;
+}
+
+.clear-all text {
+  font-size: 28rpx;
+  color: #FF6B6B;
+  padding: 10rpx 20rpx;
+}
+
+/* 按钮样式 */
+.btn {
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.btn-primary {
+  background-color: #007AFF;
+  color: #fff;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}

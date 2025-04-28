@@ -1,0 +1,187 @@
+/* pages/index/index.wxss */
+
+/* 欢迎区域样式 */
+.welcome-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+  padding: 20rpx 0;
+}
+
+.welcome-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.slogan {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.avatar-container {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2rpx solid #eee;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}
+
+/* 模式选择区域 */
+.mode-section {
+  margin-bottom: 40rpx;
+}
+
+.mode-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.mode-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.mode-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.mode-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.mode-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mode-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 6rpx;
+}
+
+.mode-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.arrow-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 历史记录区域 */
+.history-section {
+  margin-bottom: 40rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.view-more {
+  font-size: 24rpx;
+  color: #3E7BFA;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.history-item {
+  padding: 20rpx;
+}
+
+.history-time {
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.history-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.history-summary {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 空历史记录提示 */
+.empty-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx 0;
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 使用小贴士 */
+.tips-section {
+  margin-bottom: 40rpx;
+}
+
+.tips-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  color: #3E7BFA;
+}
+
+.tips-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.tips-content text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}

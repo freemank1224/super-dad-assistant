@@ -1,0 +1,69 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部欢迎区域 -->
+  <view class="welcome-section">
+    <view class="welcome-text">
+      <text class="greeting">你好，{{userInfo.nickName || '家长'}}</text>
+      <text class="slogan">让阅读更有启发性的对话</text>
+    </view>
+    <view class="avatar-container">
+      <image class="avatar" src="{{userInfo.avatarUrl || '../../images/default-avatar.png'}}"></image>
+    </view>
+  </view>
+  
+  <!-- 功能模式入口 -->
+  <view class="mode-section">
+    <view class="mode-title">选择模式</view>
+    <view class="mode-cards">
+      <view class="mode-card" bindtap="navigateToPhotoMode">
+        <image class="mode-icon" src="../../images/photo-mode.png"></image>
+        <view class="mode-info">
+          <text class="mode-name">绘本拍照模式</text>
+          <text class="mode-desc">拍摄绘本内容，生成启发式提问</text>
+        </view>
+        <image class="arrow-icon" src="../../images/arrow-right.png"></image>
+      </view>
+      
+      <view class="mode-card" bindtap="navigateToTopicMode">
+        <image class="mode-icon" src="../../images/topic-mode.png"></image>
+        <view class="mode-info">
+          <text class="mode-name">自选主题模式</text>
+          <text class="mode-desc">输入自定义主题，生成启发式提问</text>
+        </view>
+        <image class="arrow-icon" src="../../images/arrow-right.png"></image>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 最近历史记录 -->
+  <view class="history-section" wx:if="{{recentHistory.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">最近记录</text>
+      <navigator url="/pages/history/history" class="view-more">查看更多</navigator>
+    </view>
+    
+    <view class="history-list">
+      <view class="history-item card" wx:for="{{recentHistory}}" wx:key="timestamp" bindtap="navigateToHistoryDetail" data-index="{{index}}">
+        <view class="history-time">{{item.date}}</view>
+        <view class="history-title text-ellipsis">{{item.title}}</view>
+        <view class="history-summary text-ellipsis">{{item.summary}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 无历史记录提示 -->
+  <view class="empty-history" wx:else>
+    <image class="empty-icon" src="../../images/empty-history.png"></image>
+    <text class="empty-text">暂无历史记录</text>
+  </view>
+  
+  <!-- 使用小贴士 -->
+  <view class="tips-section card">
+    <view class="tips-title">使用小贴士</view>
+    <view class="tips-content">
+      <text>1. 拍照模式下，请确保绘本页面清晰可见</text>
+      <text>2. 自选主题模式下，可以输入任何感兴趣的话题</text>
+      <text>3. 语音互动时，请让孩子清晰地回答问题</text>
+    </view>
+  </view>
+</view>

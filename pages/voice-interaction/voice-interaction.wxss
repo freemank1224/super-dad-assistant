@@ -1,0 +1,229 @@
+/* pages/voice-interaction/voice-interaction.wxss */
+
+.voice-interaction-container {
+  padding: 30rpx;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  text-align: center;
+  color: #333;
+}
+
+/* 问题展示区域 */
+.question-display {
+  margin-bottom: 40rpx;
+  padding: 30rpx;
+}
+
+.question-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.current-question {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30rpx;
+  line-height: 1.5;
+}
+
+.question-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #007AFF;
+  padding: 10rpx;
+}
+
+.nav-btn image {
+  width: 32rpx;
+  height: 32rpx;
+  margin: 0 10rpx;
+}
+
+.question-counter {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 语音互动区域 */
+.interaction-section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.voice-record-container {
+  display: flex;
+  justify-content: center;
+  margin: 30rpx 0;
+}
+
+.voice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.voice-btn.recording {
+  background-color: #FF6B6B;
+  transform: scale(1.05);
+}
+
+.voice-btn image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+
+.voice-btn text {
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+}
+
+.voice-btn.recording text {
+  color: #fff;
+}
+
+/* 回答展示区域 */
+.answer-display {
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+}
+
+.answer-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.answer-content {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* AI回复区域 */
+.ai-response {
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+  background-color: #F0F8FF;
+}
+
+.response-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.response-content {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 20rpx;
+}
+
+.response-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20rpx;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+  font-size: 26rpx;
+  color: #007AFF;
+}
+
+.action-btn image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 40rpx 0;
+}
+
+.btn {
+  width: 45%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.btn-outline {
+  border: 2rpx solid #007AFF;
+  color: #007AFF;
+  background-color: transparent;
+}
+
+.btn-primary {
+  background-color: #007AFF;
+  color: #fff;
+}
+
+/* 提示信息 */
+.tips-section {
+  margin-top: 40rpx;
+  padding: 30rpx;
+  background-color: #F8F8F8;
+  border-radius: 16rpx;
+}
+
+.tips-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.tips-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.tips-content text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}

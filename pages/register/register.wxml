@@ -1,0 +1,42 @@
+<!-- pages/register/register.wxml -->
+<view class="container register-container">
+  <view class="page-title">注册账号</view>
+  
+  <view class="register-form card">
+    <view class="input-group">
+      <view class="input-label">昵称</view>
+      <input class="input" type="text" placeholder="请输入您的昵称" bindinput="inputNickname" value="{{nickname}}"/>
+    </view>
+    
+    <view class="input-group">
+      <view class="input-label">用户名</view>
+      <input class="input" type="text" placeholder="请输入用户名" bindinput="inputUsername" value="{{username}}"/>
+    </view>
+    
+    <view class="input-group">
+      <view class="input-label">密码</view>
+      <input class="input" type="password" placeholder="请输入密码" bindinput="inputPassword" value="{{password}}"/>
+    </view>
+    
+    <view class="input-group">
+      <view class="input-label">确认密码</view>
+      <input class="input" type="password" placeholder="请再次输入密码" bindinput="inputConfirmPassword" value="{{confirmPassword}}"/>
+    </view>
+    
+    <view class="input-group">
+      <view class="input-label">邮箱（选填）</view>
+      <input class="input" type="text" placeholder="请输入邮箱地址" bindinput="inputEmail" value="{{email}}"/>
+    </view>
+    
+    <view class="agreement">
+      <checkbox checked="{{agreed}}" bindtap="toggleAgreement"></checkbox>
+      <text>我已阅读并同意<text class="link">用户协议</text>和<text class="link">隐私政策</text></text>
+    </view>
+    
+    <button class="btn btn-primary register-btn" bindtap="register" disabled="{{!agreed}}">注册</button>
+    
+    <view class="login-link">
+      <navigator url="/pages/login/login" open-type="navigate">已有账号？返回登录</navigator>
+    </view>
+  </view>
+</view>

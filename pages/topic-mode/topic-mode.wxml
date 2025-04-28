@@ -1,0 +1,59 @@
+<!-- pages/topic-mode/topic-mode.wxml -->
+<view class="container topic-mode-container">
+  <view class="page-title">自选主题模式</view>
+  
+  <!-- 主题输入区域 -->
+  <view class="topic-input-section" wx:if="{{!showQuestions}}">
+    <view class="section-title">请输入或说出您想提问的主题</view>
+    
+    <view class="text-input-container">
+      <textarea class="topic-textarea" value="{{topicText}}" bindinput="textInput" placeholder="例如：动物保护、环境保护、友谊、勇气等" auto-height />
+    </view>
+    
+    <view class="voice-input-container">
+      <view class="voice-btn" bindtouchstart="startVoiceInput" bindtouchend="endVoiceInput">
+        <image src="{{isRecording ? '../../images/recording.png' : '../../images/microphone.png'}}"></image>
+        <text>{{isRecording ? '松开结束' : '按住说话'}}</text>
+      </view>
+    </view>
+    
+    <view class="topic-suggestions">
+      <view class="section-title">热门主题</view>
+      <view class="suggestions-list">
+        <view class="suggestion-item" wx:for="{{suggestions}}" wx:key="index" bindtap="selectSuggestion" data-topic="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+    
+    <button class="btn btn-primary generate-btn" bindtap="generateQuestions">生成提问</button>
+  </view>
+  
+  <!-- 生成的问题列表区域 -->
+  <view class="questions-section" wx:if="{{showQuestions}}">
+    <view class="topic-header">
+      <view class="section-title">主题：{{topicText}}</view>
+      <view class="topic-desc">以下是基于该主题生成的启发式提问</view>
+    </view>
+    
+    <view class="questions-list">
+      <view class="question-item card" wx:for="{{questions}}" wx:key="index">
+        <view class="question-number">问题 {{index + 1}}</view>
+        <view class="question-content">{{item.content}}</view>
+        <view class="question-actions">
+          <view class="action-btn" bindtap="toggleFavorite" data-index="{{index}}">
+            <image src="{{item.favorite ? '../../images/star-filled.png' : '../../images/star.png'}}"></image>
+          </view>
+          <view class="action-btn" bindtap="copyQuestion" data-index="{{index}}">
+            <image src="../../images/copy.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="action-buttons">
+      <button class="btn btn-outline" bindtap="backToTopicInput">返回编辑</button>
+      <button class="btn btn-primary" bindtap="startVoiceInteraction">开始语音互动</button>
+    </view>
+  </view>
+</view>

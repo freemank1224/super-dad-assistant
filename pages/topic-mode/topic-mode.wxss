@@ -1,0 +1,154 @@
+/* pages/topic-mode/topic-mode.wxss */
+
+.topic-mode-container {
+  padding: 30rpx;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+/* 主题输入区域 */
+.topic-input-section {
+  width: 100%;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.text-input-container {
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.topic-textarea {
+  width: 100%;
+  min-height: 120rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* 语音输入区域 */
+.voice-input-container {
+  display: flex;
+  justify-content: center;
+  margin: 30rpx 0;
+}
+
+.voice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  width: 160rpx;
+  height: 160rpx;
+  justify-content: center;
+}
+
+.voice-btn image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.voice-btn text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 主题推荐区域 */
+.topic-suggestions {
+  margin: 40rpx 0;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.suggestion-item {
+  background-color: #f5f5f5;
+  border-radius: 30rpx;
+  padding: 15rpx 30rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.generate-btn {
+  width: 100%;
+  margin-top: 40rpx;
+}
+
+/* 问题列表区域 */
+.questions-section {
+  width: 100%;
+}
+
+.topic-header {
+  margin-bottom: 30rpx;
+}
+
+.topic-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+.questions-list {
+  margin-bottom: 40rpx;
+}
+
+.question-item {
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.question-number {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.question-content {
+  font-size: 30rpx;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.question-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  padding: 10rpx;
+  margin-left: 20rpx;
+}
+
+.action-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+}
+
+.action-buttons .btn {
+  width: 45%;
+}
