@@ -76,17 +76,15 @@ Page({
   },
   
   // 微信一键登录
-  wechatLogin: function(e) {
-    if (e.detail.userInfo) {
-      // 用户同意授权
-      const userInfo = e.detail.userInfo;
-      
-      wx.showLoading({
-        title: '登录中...'
-      });
-      
-      setTimeout(() => {
-        wx.hideLoading();
+  wechatLogin: function() {
+    wx.getUserProfile({
+      desc: '用于完善用户资料',
+      success: (res) => {
+        const userInfo = res.userInfo;
+        
+        wx.showLoading({
+          title: '登录中...'
+        });
         
         // 保存用户信息到全局数据
         const app = getApp();
@@ -103,14 +101,15 @@ Page({
             });
           }
         });
-      }, 1000);
-    } else {
-      // 用户拒绝授权
-      wx.showToast({
-        title: '您拒绝了授权',
-        icon: 'none'
-      });
-    }
+      },
+      fail: (err) => {
+        console.error('获取用户信息失败:', err);
+        wx.showToast({
+          title: '获取用户信息失败',
+          icon: 'none'
+        });
+      }
+    });
   },
   
   // 体验模式（无需登录）

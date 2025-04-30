@@ -31,7 +31,7 @@
   <!-- 微信一键登录 -->
   <view class="wechat-login-section">
     <view class="wechat-login-title">或者使用</view>
-    <button class="wechat-login-btn" open-type="getUserInfo" bindgetuserinfo="wechatLogin">
+    <button class="wechat-login-btn" bindtap="wechatLogin">
       <image class="wechat-icon" src="../../images/wechat-icon.png"></image>
       微信一键登录
     </button>

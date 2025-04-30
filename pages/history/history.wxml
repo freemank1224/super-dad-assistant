@@ -9,7 +9,7 @@
         <view class="history-time">{{item.formattedTime}}</view>
         <view class="history-actions">
           <view class="action-btn" bindtap="deleteHistory" data-index="{{index}}">
-            <image src="../../images/delete.png"></image>
+            <image src="../../images/settings.png"></image>
           </view>
         </view>
       </view>
@@ -33,11 +33,11 @@
       
       <view class="history-footer">
         <view class="action-btn" bindtap="copyHistory" data-index="{{index}}">
-          <image src="../../images/copy.png"></image>
+          <image src="../../images/camera.png"></image>
           <text>复制对话</text>
         </view>
         <view class="action-btn" bindtap="shareHistory" data-index="{{index}}">
-          <image src="../../images/share.png"></image>
+          <image src="../../images/wechat-icon.png"></image>
           <text>分享</text>
         </view>
       </view>
@@ -46,7 +46,7 @@
   
   <!-- 空状态 -->
   <view class="empty-state" wx:else>
-    <image src="../../images/empty.png" class="empty-image"></image>
+    <image src="../../images/empty-history.png" class="empty-image"></image>
     <view class="empty-text">暂无对话历史</view>
     <button class="btn btn-primary" bindtap="goToIndex">开始新对话</button>
   </view>

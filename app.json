@@ -43,12 +43,13 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "permission": {
-    "scope.camera": {
-      "desc": "用于拍摄绘本内容进行文字识别"
-    },
-    "scope.record": {
-      "desc": "用于语音输入和互动对话"
-    }
-  }
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "plugins": {},
+  "lazyCodeLoading": "requiredComponents"
 }
