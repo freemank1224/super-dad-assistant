@@ -53,34 +53,58 @@ async function convertSvgToPng(svgPath, pngPath) {
   }
 }
 
-// 批量转换目录中的所有SVG文件
+// 检查SVG文件是否需要转换为PNG（不存在对应PNG或SVG比PNG更新）
+function needsConversion(svgPath, pngPath) {
+  // 如果PNG不存在，需要转换
+  if (!fs.existsSync(pngPath)) {
+    return true;
+  }
+  
+  // 如果SVG比PNG更新，需要转换
+  const svgStat = fs.statSync(svgPath);
+  const pngStat = fs.statSync(pngPath);
+  return svgStat.mtime > pngStat.mtime;
+}
+
+// 批量转换目录中需要更新的SVG文件
 async function batchConvertSvgToPng(directory) {
   const files = fs.readdirSync(directory);
   const svgFiles = files.filter(file => path.extname(file).toLowerCase() === '.svg');
 
   console.log(`找到 ${svgFiles.length} 个SVG文件`);
+  let convertedCount = 0;
+  let skippedCount = 0;
 
   for (let i = 0; i < svgFiles.length; i++) {
     const svgFile = svgFiles[i];
     const svgPath = path.join(directory, svgFile);
     const pngPath = path.join(directory, path.basename(svgFile, '.svg') + '.png');
 
-    console.log(`[${i+1}/${svgFiles.length}] 正在转换: ${svgFile}`);
+    // 检查是否需要转换
+    if (needsConversion(svgPath, pngPath)) {
+      console.log(`[${i+1}/${svgFiles.length}] 正在转换: ${svgFile}`);
 
-    try {
-      const success = await convertSvgToPng(svgPath, pngPath);
-      if (success) {
-        console.log(`成功转换: ${svgFile} -> ${path.basename(pngPath)}`);
-      } else {
-        console.log(`转换失败: ${svgFile}`);
+      try {
+        const success = await convertSvgToPng(svgPath, pngPath);
+        if (success) {
+          console.log(`成功转换: ${svgFile} -> ${path.basename(pngPath)}`);
+          convertedCount++;
+        } else {
+          console.log(`转换失败: ${svgFile}`);
+        }
+      } catch (error) {
+        console.error(`转换过程出错 ${svgFile}:`, error.message);
       }
-    } catch (error) {
-      console.error(`转换过程出错 ${svgFile}:`, error.message);
-    }
 
-    // 添加短暂延迟，避免可能的资源问题
-    await new Promise(resolve => setTimeout(resolve, 100));
+      // 添加短暂延迟，避免可能的资源问题
+      await new Promise(resolve => setTimeout(resolve, 100));
+    } else {
+      console.log(`[${i+1}/${svgFiles.length}] 跳过转换: ${svgFile} (PNG已存在且是最新的)`);
+      skippedCount++;
+    }
   }
+  
+  console.log(`转换完成: 已转换 ${convertedCount} 个文件, 跳过 ${skippedCount} 个文件`);
 }
 
 // 主函数
@@ -91,9 +115,6 @@ async function main() {
   const imagesDir = path.join(baseDir, 'images');
 
   console.log(`处理目录: ${imagesDir}`);
-
-  // 删除所有PNG文件
-  deleteAllPngs(imagesDir);
 
   // 检查并安装sharp
   if (checkAndInstallSharp()) {
