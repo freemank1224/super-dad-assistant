@@ -1,17 +1,22 @@
 // pages/index/index.js
+const storage = require('../../utils/storage');
+
 Page({
   data: {
     userInfo: {},
     isLoggedIn: false,
-    recentHistory: []
+    recentHistory: [],
+    pageSize: 3,
+    currentPage: 1,
+    hasMore: false
   },
 
   onLoad: function() {
-    // 获取全局数据
-    const app = getApp();
+    // 获取用户信息
+    const userInfo = storage.getUserInfo();
     this.setData({
-      isLoggedIn: app.globalData.isLoggedIn,
-      userInfo: app.globalData.userInfo || {}
+      isLoggedIn: !!userInfo,
+      userInfo: userInfo || {}
     });
     
     // 如果未登录，跳转到登录页
@@ -22,31 +27,51 @@ Page({
       return;
     }
     
-    // 获取最近历史记录（最多显示3条）
-    this.loadRecentHistory();
+    // 加载历史记录
+    this.loadHistoryWithPagination();
   },
   
   onShow: function() {
-    // 每次页面显示时刷新数据
-    const app = getApp();
+    // 每次页面显示时刷新用户数据
+    const userInfo = storage.getUserInfo();
     this.setData({
-      isLoggedIn: app.globalData.isLoggedIn,
-      userInfo: app.globalData.userInfo || {}
+      isLoggedIn: !!userInfo,
+      userInfo: userInfo || {}
     });
     
     // 刷新历史记录
-    this.loadRecentHistory();
+    this.loadHistoryWithPagination(true);
   },
   
-  // 加载最近历史记录
-  loadRecentHistory: function() {
-    const app = getApp();
-    const historyRecords = app.globalData.historyRecords || [];
-    // 只取最近3条记录
-    const recentHistory = historyRecords.slice(0, 3);
+  // 分页加载历史记录
+  loadHistoryWithPagination: function(reset = false) {
+    if (reset) {
+      this.setData({
+        currentPage: 1,
+        recentHistory: []
+      });
+    }
+    
+    const historyRecords = storage.getHistory();
+    const start = (this.data.currentPage - 1) * this.data.pageSize;
+    const end = start + this.data.pageSize;
+    const newRecords = historyRecords.slice(start, end);
+    
     this.setData({
-      recentHistory: recentHistory
+      recentHistory: [...this.data.recentHistory, ...newRecords],
+      hasMore: end < historyRecords.length
     });
+  },
+  
+  // 加载更多历史记录
+  loadMore: function() {
+    if (this.data.hasMore) {
+      this.setData({
+        currentPage: this.data.currentPage + 1
+      }, () => {
+        this.loadHistoryWithPagination();
+      });
+    }
   },
   
   // 跳转到拍照模式
@@ -67,12 +92,24 @@ Page({
   navigateToHistoryDetail: function(e) {
     const index = e.currentTarget.dataset.index;
     const record = this.data.recentHistory[index];
-    // 将选中的记录存入全局数据
-    const app = getApp();
-    app.globalData.currentRecord = record;
     
     wx.navigateTo({
-      url: '/pages/history/history-detail/history-detail'
+      url: '/pages/history/history-detail/history-detail',
+      success: function(res) {
+        // 将数据传递给详情页
+        res.eventChannel.emit('acceptHistoryRecord', record);
+      }
     });
+  },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    this.loadHistoryWithPagination(true);
+    wx.stopPullDownRefresh();
+  },
+
+  // 触底加载更多
+  onReachBottom: function() {
+    this.loadMore();
   }
-})
+});

@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="onBack">
+      <text class="iconfont icon-back"></text>
+    </view>
+    <view class="title">互动记录详情</view>
+  </view>
+
+  <view class="content" wx:if="{{record}}">
+    <view class="record-card">
+      <view class="record-time">{{record.createTime}}</view>
+      
+      <view class="record-type">
+        <text class="type-label">互动类型：</text>
+        <text class="type-value">{{record.type === 'photo' ? '图片模式' : '主题模式'}}</text>
+      </view>
+
+      <view class="record-content">
+        <block wx:if="{{record.type === 'photo'}}">
+          <view class="photo-section">
+            <image class="record-image" src="{{record.imageUrl}}" mode="aspectFit"></image>
+            <view class="image-text" wx:if="{{record.recognizedText}}">
+              <text class="text-label">识别文字：</text>
+              <text class="text-content">{{record.recognizedText}}</text>
+            </view>
+          </view>
+        </block>
+        
+        <block wx:else>
+          <view class="topic-section">
+            <text class="topic-label">主题：</text>
+            <text class="topic-content">{{record.topic}}</text>
+          </view>
+        </block>
+
+        <view class="qa-section">
+          <view class="section-title">问答记录</view>
+          <view class="qa-list">
+            <view class="qa-item" wx:for="{{record.qaList}}" wx:key="index">
+              <view class="question">
+                <text class="q-label">问：</text>
+                <text class="q-content">{{item.question}}</text>
+              </view>
+              <view class="answer" wx:if="{{item.answer}}">
+                <text class="a-label">答：</text>
+                <text class="a-content">{{item.answer}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="no-data" wx:else>
+    <text>记录不存在或已被删除</text>
+  </view>
+</view> 
